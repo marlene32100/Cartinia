@@ -21,15 +21,15 @@ html(lang=en)
     meta(name="msapplication-TileColor" content="#da532c")
     meta(name="theme-color" content="#ffffff")
 
-    meta(property="type" content="website")
-    meta(property="og:title" content=meta.data.title)
-    meta(property="og:description" content=meta.data.description)
-    meta(property="og:image" content=meta.data.image ? meta.data.image.url : "")
+    //meta(property="type" content="website")
+    //meta(property="og:title" content=meta.data.title)
+    //meta(property="og:description" content=meta.data.description)
+    //meta(property="og:image" content=meta.data.image ? meta.data.image.url : "")
 
-    meta(property="twitter:card" content="summary_large_image")
-    meta(property="twitter:title" content=meta.data.title)
-    meta(property="twitter:description" content=meta.data.description)
-    meta(property="twitter:image" content=meta.data.image ? meta.data.image.url : "")
+    //meta(property="twitter:card" content="summary_large_image")
+    //meta(property="twitter:title" content=meta.data.title)
+    //meta(property="twitter:description" content=meta.data.description)
+    //meta(property="twitter:image" content=meta.data.image ? meta.data.image.url : "")
 
     link(rel="preconnect" href="https://www.google-analytics.com")
     link(rel="preconnect" href="https://fonts.gstatic.com")
@@ -43,7 +43,6 @@ html(lang=en)
 
 body
   include ./partials/preloader
-  include ./partials/navigation
 
   .content#content(data-template=template)
     block content

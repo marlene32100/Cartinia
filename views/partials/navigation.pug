@@ -1,16 +1,10 @@
 nav.navigation
   .navigation__wrapper
     a.navigation__link(href="/")
-      | Cartinia Classic Cars
 
-      svg.navigation__link__icon
+      img.navigation__link__icon(alt=navbar.data.logo.alt url=navbar.data.logo.url)
 
     ul.navigation__list
-      li.navigation__list__item
-        a.navigation__list__link(href="/team") Team
-      li.navigation__list__item
-        a.navigation__list__link(href="/sell") On Sale Cars
-      li.navigation__list__item
-        a.navigation__list__link(href="/sold") Sold Cars
-      li.navigation__list__item
-        a.navigation__list__link(href="/contact") Contact
+      each item in navigation.data.link
+        li.navigation__list__item
+        a.navigation__list__link(href=item.linktopage.slug)=item.page[0].text

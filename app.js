@@ -41,25 +41,49 @@ app.get("/", (req, res) => {
   initApi(req).then((api) => {
     api
       .query(
-        Prismic.Predicates.any("document.type", ["home", "meta", "homedown"])
+        Prismic.Predicates.any("document.type", [
+          "home",
+          "meta",
+          "navbar",
+          "homedown",
+          "navigation",
+        ])
       )
       .then((response) => {
-        console.log(response);
         const { results } = response;
-        const [home, meta, homedown] = results;
-        res.render("pages/home", { home, meta, homedown });
+        const [home, meta, navbar, homedown, navigation] = results;
+        console.log(navigation.data.link[0]);
+        res.render("pages/home", { home, meta, navbar, homedown, navigation });
       });
   });
 });
 
 app.get("/team", async (req, res) => {});
 
-app.get("/sell", (req, res) => {
-  res.render("pages/sell");
+app.get("/on-sale", (req, res) => {
+  initApi(req).then((api) => {
+    api
+      .query(Prismic.Predicates.any("document.type", ["on_sale", "meta"]))
+      .then((response) => {
+        const { results } = response;
+        const [on_sale, meta] = results;
+        console.log(on_sale.data.body[0].primary);
+        res.render("pages/on-sale", { on_sale, meta });
+      });
+  });
 });
 
 app.get("/sold", (req, res) => {
-  res.render("pages/sold");
+  initApi(req).then((api) => {
+    api
+      .query(Prismic.Predicates.any("document.type", ["sold", "meta"]))
+      .then((response) => {
+        const { results } = response;
+        const [meta, sold] = results;
+        console.log(sold.data.cars[0]);
+        res.render("pages/sold", { meta, sold });
+      });
+  });
 });
 
 app.get("/contact", (req, res) => {

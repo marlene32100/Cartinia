@@ -4,4 +4,14 @@ block variables
   - var template = "sold"
 
 block content
-  h1.portfolio__title Sold Cars
+  h1.sold__title=sold.data.title[0].text
+  p.sold_caption=sold.data.description[0].text
+  each car in sold.data.cars
+    img.sold__car__image(alt=car.image.alt url=car.image.url)
+    p.sold__car__description=car.description1[0].text
+
+  each section in sold.data.body
+    if section.slice_type === "call_to_action"
+      h3=section.primary.title[0].text
+      a(href=section.primary.button_link.slug)
+        p=section.primary.button_label
