@@ -1,0 +1,36 @@
+extends ../base
+
+block variables
+  - var template = "home"
+
+block content
+  .home
+    .home__wrapper
+      section.home__landing
+        img(alt=home.data.logo.alt src=home.data.logo.url)
+        h2.home__landing__title=home.data.title[0].text
+        h3.home__landing__subtitle=home.data.subtitle[0].text
+        p.home__landing__countries=home.data.countries[0].text
+        p.home__landing__scroll=home.data.scroll[0].text
+        img(alt=home.data.hero.alt src=home.data.hero.url)
+
+      section.home__homedown
+        .home__homedown__wrapper
+          include ../partials/navigation
+          .home__homedown__heroarea
+            img.home__homedown__heroarea__hero(alt=homedown.data.background.alt src=homedown.data.background.url)
+            h2.home__homedown__heroarea__quote=homedown.data.quote.text
+            each item in homedown.data.values
+              button.home__homedown__heroarea__button=item.name
+          .home__homedown__values
+            each section in homedown.data.body
+              if section.slice_type == "highlights"
+                article.home__homedown__values__media
+                  figure.home__homedown__values__media__image
+                    img.home__homedown__values__image(alt=section.primary.image.alt src=section.primary.image.url)
+                  h1.home__homedown__values__title=section.primary.title[0].text
+                  p.home__homedown__values__description=section.primary.description[0].text
+
+
+
+
