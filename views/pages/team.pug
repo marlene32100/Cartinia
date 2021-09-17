@@ -4,4 +4,8 @@ block variables
   - var template = "team"
 
 block content
-  h1.about__title Our Team
+  include ../partials/navigation
+  .team__wrapper
+    h1.team__title=team.data.title[0].text
+    img.team_image(alt=team.data.image.alt url=team.data.image.url)
+

@@ -1,4 +1,17 @@
 footer.footer
   .footer__wrapper
-    .h1.footer__title Cartinia Classic Cars
-    .address.footer__address Dammgatan 30A, Knivsta
+    .footer__contact__wrapper
+      address.footer__address=footer.data.address[0].text
+      a.footer__phone(href="tel:"+footer.data.phone[0].text)
+        phone.footer__phone=footer.data.phone[0].text
+      a.footer__email(href="mailto:"+footer.data.email[0].text)
+        phone.footer__email=footer.data.email[0].text
+    .footer__logo__wrapper
+      figure.footer__media
+        img.footer__media__image(alt=footer.data.logo.alt url=footer.data.logo.url)
+    .footer__social__wrapper
+      p.footer__social__text=footer.data.follow_text[0].text
+      .footer__social__media__wrapper
+        each image in footer.data.social_icons
+          figure.footer__social__icon
+            img(alt=image.icon.alt url=image.icon.url)

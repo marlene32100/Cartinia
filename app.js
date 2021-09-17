@@ -1,6 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
+const errorHandler = require("errorhandler");
+const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
+
 const app = express();
 const path = require("path");
 const port = 3000;
@@ -22,6 +26,11 @@ const handleLinkResolver = (doc) => {
   return "/";
 };
 
+app.use(errorHandler());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride());
+
 // Middleware to inject prismic context
 app.use((req, res, next) => {
   res.locals.ctx = {
@@ -37,7 +46,7 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   initApi(req).then((api) => {
     api
       .query(
@@ -58,9 +67,19 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/team", async (req, res) => {});
+app.get("/team", async (req, res) => {
+  const api = await initApi(req);
+  const team = await api.getSingle("team");
+  const meta = await api.getSingle("meta");
+  const navbar = await api.getSingle("navbar");
+  const navigation = await api.getSingle("navigation");
+  const footer = await api.getSingle("footer");
 
-app.get("/on-sale", (req, res) => {
+  console.log(footer.data.social_icons);
+  res.render("pages/team", { team, meta, navbar, navigation, footer });
+});
+
+app.get("/on-sale", async (req, res) => {
   initApi(req).then((api) => {
     api
       .query(Prismic.Predicates.any("document.type", ["on_sale", "meta"]))
@@ -73,7 +92,7 @@ app.get("/on-sale", (req, res) => {
   });
 });
 
-app.get("/sold", (req, res) => {
+app.get("/sold", async (req, res) => {
   initApi(req).then((api) => {
     api
       .query(Prismic.Predicates.any("document.type", ["sold", "meta"]))
@@ -86,8 +105,11 @@ app.get("/sold", (req, res) => {
   });
 });
 
-app.get("/contact", (req, res) => {
-  res.render("pages/contact");
+app.get("/contact", async (req, res) => {
+  const navbar = await api.getSingle("navbar");
+  const navigation = await api.getSingle("navigation");
+  const footer = await api.getSingle("footer");
+  res.render("pages/contact", { navbar, navigation, footer });
 });
 
 app.listen(port, () => {
