@@ -56,76 +56,53 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+const handleRequest = async (api) => {
+  const meta = await api.getSingle("meta");
+  const navbar = await api.getSingle("navbar");
+  const navigation = await api.getSingle("navigation");
+  const footer = await api.getSingle("footer");
+  return {
+    meta,
+    navbar,
+    navigation,
+    footer,
+  };
+};
+
 app.get("/", async (req, res) => {
-  initApi(req).then((api) => {
-    api
-      .query(
-        Prismic.Predicates.any("document.type", [
-          "home",
-          "meta",
-          "navbar",
-          "homedown",
-          "navigation",
-          "footer",
-        ])
-      )
-      .then((response) => {
-        const { results } = response;
-        const [home, meta, navbar, homedown, navigation, footer] = results;
-        console.log(footer.data.social_icons[0].icon);
-        res.render("pages/home", {
-          home,
-          meta,
-          navbar,
-          homedown,
-          navigation,
-          footer,
-        });
-      });
-  });
+  const api = await initApi(req);
+  const defaults = await handleRequest(api);
+  const home = await api.getSingle("home");
+  const homedown = await api.getSingle("homedown");
+  res.render("pages/home", { ...defaults, home, homedown });
 });
 
 app.get("/team", async (req, res) => {
   const api = await initApi(req);
+  const defaults = await handleRequest(api);
   const team = await api.getSingle("team");
-  const meta = await api.getSingle("meta");
-  const navbar = await api.getSingle("navbar");
-  const navigation = await api.getSingle("navigation");
-  const footer = await api.getSingle("footer");
-
-  console.log(footer.data.social_icons);
-  res.render("pages/team", { team, meta, navbar, navigation, footer });
+  res.render("pages/team", { ...defaults, team });
 });
 
 app.get("/on-sale", async (req, res) => {
   const api = await initApi(req);
+  const defaults = await handleRequest(api);
   const on_sale = await api.getSingle("on_sale");
-  const meta = await api.getSingle("meta");
-  const navbar = await api.getSingle("navbar");
-  const navigation = await api.getSingle("navigation");
-  const footer = await api.getSingle("footer");
-  res.render("pages/on-sale", { on_sale, meta, navbar, navigation, footer });
+  res.render("pages/on-sale", { ...defaults, on_sale });
 });
 
 app.get("/sold", async (req, res) => {
   const api = await initApi(req);
+  const defaults = await handleRequest(api);
   const sold = await api.getSingle("sold");
-  const meta = await api.getSingle("meta");
-  const navbar = await api.getSingle("navbar");
-  const navigation = await api.getSingle("navigation");
-  const footer = await api.getSingle("footer");
-  res.render("pages/sold", { sold, meta, navbar, navigation, footer });
+  res.render("pages/sold", { ...defaults, sold });
 });
 
 app.get("/contact", async (req, res) => {
   const api = await initApi(req);
+  const defaults = await handleRequest(api);
   const contact = await api.getSingle("contact");
-  const meta = await api.getSingle("meta");
-  const navbar = await api.getSingle("navbar");
-  const navigation = await api.getSingle("navigation");
-  const footer = await api.getSingle("footer");
-
-  res.render("pages/contact", { contact, meta, navbar, navigation, footer });
+  res.render("pages/contact", { ...defaults, contact });
 });
 
 app.listen(port, () => {
