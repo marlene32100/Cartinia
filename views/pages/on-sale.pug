@@ -4,12 +4,15 @@ block variables
   - var template = "on-sale"
 
 block content
+  include ../partials/navigation
   .on-sale__wrapper
+    figure.on_sale__banner
+      img.on_sale__banner__image(alt=on_sale.data.banner.alt src=on_sale.data.banner.url)
     h1.on_sale__title=on_sale.data.title[0].text
     p.on_sale__caption=on_sale.data.cta[0].text
     each car in on_sale.data.cars
       figure.on-sale__car__media
-        img.on_sale__car__media__image(alt=car.image.alt url=car.image.url)
+        img.on_sale__car__media__image(alt=car.image.alt src=car.image.url)
       p.on_sale__car__description=car.description[0].text
 
     each section in on_sale.data.body

@@ -4,12 +4,15 @@ block variables
   - var template = "sold"
 
 block content
+  include ../partials/navigation
   .sold__wrapper
+    figure.sold__banner
+      img.sold__banner__image(alt=sold.data.banner.alt src=sold.data.banner.url)
     h1.sold__title=sold.data.title[0].text
     p.sold_caption=sold.data.description[0].text
     each car in sold.data.cars
       figure.sold__car__media
-        img.sold__car__media__image(alt=car.image.alt url=car.image.url)
+        img.sold__car__media__image(alt=car.image.alt src=car.image.url)
       p.sold__car__description=car.description1[0].text
 
     each section in sold.data.body
