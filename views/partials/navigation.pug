@@ -7,4 +7,4 @@ nav.navigation
     ul.navigation__list
       each item in navigation.data.link
         li.navigation__list__item
-        a.navigation__list__link(href=item.linktopage.slug)=item.page[0].text
+        a.navigation__list__link(href=Link(item.linktopage.slug))=item.page[0].text

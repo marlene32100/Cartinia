@@ -22,8 +22,21 @@ const initApi = (req) => {
 
 // Link Resolver
 const handleLinkResolver = (doc) => {
-  // Default to homepage
-  return "/";
+  if (doc == "home") {
+    return "/";
+  }
+  if (doc == "team") {
+    return "/team";
+  }
+  if (doc == "on-sale") {
+    return "/on-sale";
+  }
+  if (doc == "sold") {
+    return "/sold";
+  }
+  if (doc == "contact") {
+    return "/contact";
+  }
 };
 
 app.use(errorHandler());
@@ -33,10 +46,7 @@ app.use(methodOverride());
 
 // Middleware to inject prismic context
 app.use((req, res, next) => {
-  res.locals.ctx = {
-    endpoint: process.env.PRISMIC_ENDPOINT,
-    linkResolver: handleLinkResolver,
-  };
+  res.locals.Link = handleLinkResolver;
 
   res.locals.PrismicDOM = PrismicDOM;
 
@@ -108,10 +118,14 @@ app.get("/sold", async (req, res) => {
 });
 
 app.get("/contact", async (req, res) => {
+  const api = await initApi(req);
+  const contact = await api.getSingle("contact");
+  const meta = await api.getSingle("meta");
   const navbar = await api.getSingle("navbar");
   const navigation = await api.getSingle("navigation");
   const footer = await api.getSingle("footer");
-  res.render("pages/contact", { navbar, navigation, footer });
+
+  res.render("pages/contact", { contact, meta, navbar, navigation, footer });
 });
 
 app.listen(port, () => {

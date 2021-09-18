@@ -4,4 +4,22 @@ block variables
   - var template = "contact"
 
 block content
-  h1.contact__title Contact
+  include ../partials/navigation
+  .contact__wrapper
+    figure.contact__banner
+      img.contact__banner__image(alt=contact.data.banner.alt src=contact.data.banner.url)
+    h1.contact__title=contact.data.title[0].text
+    .contact__details
+      .contact__details__address
+        address.contact__details__address__text=contact.data.address
+        a.contact__details__address__phone(href="tel:"+contact.data.phone)
+          p.contact__details__address__phone=contact.data.phone
+        br
+        a.contact__details__address__email(href="mailto:"+contact.data.email)
+          p.contact__details__address__email=contact.data.email
+
+    .contact__maps
+      h2 Latitude
+      p=contact.data.coordinates.latitude
+      h2 Longitude
+      p=contact.data.coordinates.longitude
