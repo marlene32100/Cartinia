@@ -54,6 +54,7 @@
     "dotenv": "^10.0.0",
     "errorhandler": "^1.5.1",
     "image-minimizer-webpack-plugin": "^2.2.0",
+    "include-media": "^1.4.10",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",

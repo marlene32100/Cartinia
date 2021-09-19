@@ -1,0 +1,40 @@
+%cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+%center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%fullscreen {
+  height: 100vh;
+  width: 100vw;
+}
+
+%halvscreen {
+  height: 100vh;
+  width: 50vh;
+}
+
+%relative {
+  position: relative;
+}
+
+@mixin ratio($height, $width) {
+  position: relative;
+  overflow: hidden;
+  font-size: 0;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    padding-top: $width / $height * 100%;
+    width: 100%;
+  }
+}

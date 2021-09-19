@@ -1,13 +1,21 @@
 require("dotenv").config();
 
+const logger = require("morgan");
 const express = require("express");
 const errorHandler = require("errorhandler");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 
-const app = express();
 const path = require("path");
+const app = express();
 const port = 3000;
+
+app.use(logger("dev"));
+app.use(errorHandler());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride());
+app.use(express.static(path.join(__dirname, "public")));
 
 const Prismic = require("@prismicio/client");
 var PrismicDOM = require("prismic-dom");
@@ -39,11 +47,6 @@ const handleLinkResolver = (doc) => {
   }
 };
 
-app.use(errorHandler());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride());
-
 // Middleware to inject prismic context
 app.use((req, res, next) => {
   res.locals.Link = handleLinkResolver;
@@ -74,6 +77,7 @@ app.get("/", async (req, res) => {
   const defaults = await handleRequest(api);
   const home = await api.getSingle("home");
   const homedown = await api.getSingle("homedown");
+  console.log(home.data.countries);
   res.render("pages/home", { ...defaults, home, homedown });
 });
 
