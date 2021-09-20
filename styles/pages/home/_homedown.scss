@@ -4,7 +4,9 @@
 .home__homedown__wrapper {
 }
 
-.home__homedown__heroarea {
+.home__homedown__heroarea__background {
+  @extend %relative;
+  margin: 30px 0;
 }
 
 .home__homedown__heroarea__hero {
@@ -13,25 +15,72 @@
 }
 
 .home__homedown__heroarea__quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+}
+
+.home__homedown__heroarea__quote__text {
+  opacity: 0;
+}
+
+.home__homedown__heroarea__quote__shorter {
+  border: 3px solid $color-quarter-spanish-white;
+  padding: 1px;
 }
 
 .home__homedown__heroarea__button {
+  text-align: center;
+  margin-bottom: 150px;
+  @extend %relative;
+}
+
+.home__homedown__heroarea__button__item {
+  margin: 30px auto;
+  display: block;
+  padding: 16px 32px;
+  border: 3px solid $color-quarter-spanish-white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.home__homedown__heroarea__cta {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: $color-ferrari-red;
+  position: absolute;
+  right: 0;
+}
+.home__homedown__heroarea__cta__text {
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .home__homedown__values {
+  margin-top: 30px;
 }
 
+.home__homedown__values__article {
+  padding-top: 30px;
+}
 .home__homedown__values__media {
 }
 
-.home__homedown__values__media__image {
-}
-
 .home__homedown__values__image {
+  width: 100%;
+  object-fit: contain;
 }
 
 .home__homedown__values__title {
+  @extend %title;
 }
 
 .home__homedown__values__description {
+  @extend %description;
 }

@@ -89,6 +89,7 @@
   font-size: 50px;
   font-family: $airstream;
   text-align: center;
+  padding: 10px;
   @include media(">=phone") {
     font-size: 70px;
   }
@@ -115,6 +116,8 @@
 
 .home__landing__scroll__text {
   text-align: center;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .home__landing__scroll__text::after,
