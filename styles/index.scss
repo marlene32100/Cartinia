@@ -4,8 +4,9 @@
 @import "./abstracts/_vendors";
 @import "./abstracts/_responsive";
 
-@import "./base/_base";
+@import "./base/_fonts";
 @import "./base/_reset";
+@import "./base/_base";
 
 @import "./pages/home/_home";
 @import "./pages/home/_homedown";

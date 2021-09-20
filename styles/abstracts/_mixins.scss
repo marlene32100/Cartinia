@@ -38,3 +38,8 @@
     width: 100%;
   }
 }
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}

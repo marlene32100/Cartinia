@@ -8,6 +8,11 @@ block content
   .home
     .home__wrapper
       section.home__landing
+        .home__landing__left
+          figure.home__landing__background
+            img.home__landing__background__image(alt=home.data.hero.alt src=home.data.hero.url)
+        .home__landing__scroll
+          p.home__landing__scroll__text=home.data.scroll[0].text
         .home__landing__right
           figure.home__landing__media
             img.home__landing__media__image(alt=home.data.logo.alt src=home.data.logo.url)
@@ -18,11 +23,7 @@ block content
             each country in home.data.countries
               p.home__landing__countries__list=country.text
 
-        .home__landing__left
-          figure.home__landing__background
-            img.home__landing__background__image(alt=home.data.hero.alt src=home.data.hero.url)
-        .home__landing__scroll
-          p.home__landing__scroll__text=home.data.scroll[0].text
+
 
       section.home__homedown
         .home__homedown__wrapper

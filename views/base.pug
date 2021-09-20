@@ -5,7 +5,7 @@ block variables
 html(lang=en)
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
 
     base(href="/")
 
@@ -41,12 +41,12 @@ html(lang=en)
 
     link(href="main.css" rel="stylesheet")
 
-body
+  body
 
-  .content#content(data-template=template)
-    block content
+    .content#content(data-template=template)
+      block content
 
-  .modals
-    block modal
+    .modals
+      block modal
 
-  include ./partials/footer
+    //include ./partials/footer
