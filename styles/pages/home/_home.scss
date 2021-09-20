@@ -95,6 +95,10 @@
 }
 
 .home__landing__introduction__subtitle {
+  font-family: $quicksand;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .home__landing__countries {
@@ -107,4 +111,13 @@
   position: absolute;
   bottom: 0;
   width: 100vw;
+}
+
+.home__landing__scroll__text {
+  text-align: center;
+}
+
+.home__landing__scroll__text::after,
+.home__landing__scroll__text::before {
+  content: " - ";
 }

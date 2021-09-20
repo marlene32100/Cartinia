@@ -1,10 +1,12 @@
 nav.navigation
   .navigation__wrapper
-    a.navigation__link(href="/")
-
-      img.navigation__link__icon(alt=navbar.data.logo.alt src=navbar.data.logo.url)
-
-    ul.navigation__list
-      each item in navigation.data.link
-        li.navigation__list__item
-        a.navigation__list__link(href=Link(item.linktopage.slug))=item.page[0].text
+    .navigation__bar
+      a.navigation__link(href="/")
+        img.navigation__link__icon(alt=navbar.data.logo.alt src=navbar.data.logo.url)
+      .navigation__hamburger
+        include ./hamburger
+    .navigation__open
+      ul.navigation__list
+        each item in navigation.data.link
+          li.navigation__list__item
+          a.navigation__list__link(href=Link(item.linktopage.slug))=item.page[0].text

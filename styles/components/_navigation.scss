@@ -1,0 +1,32 @@
+.navigation {
+}
+.navigation__wrapper {
+}
+.navigation__bar {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.navigation__link {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.navigation__link__icon {
+  height: 70px;
+  width: 70px;
+}
+.navigation__hamburger {
+  margin-top: auto;
+  margin-bottom: auto;
+  fill: $color-quarter-spanish-white;
+}
+.navigation__open {
+  display: none;
+}
+.navigation__list {
+}
+.navigation__list__item {
+}
+.navigation__list__link {
+}
