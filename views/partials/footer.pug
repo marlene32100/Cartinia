@@ -16,9 +16,11 @@ footer.footer
       p.footer__social__text=footer.data.follow_text[0].text
       .footer__social__media__wrapper
         each image in footer.data.social_icons
-          figure.footer__social__icon
-            img.footer__social__icon__image(alt=image.icon.alt src=image.icon.url)
+
+          a(href=image.social_link.url, target="_blank")
+            figure.footer__social__icon
+              img.footer__social__icon__image(alt=image.icon.alt src=image.icon.url)
 
     .footer__poweredby
-      a(href="https://www.blueblissstudio.com")
+      a(href="https://www.blueblissstudio.com", target="_blank")
         p.footer__poweredby__text Website by Blue Bliss

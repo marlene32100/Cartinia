@@ -29,18 +29,21 @@ block content
         .home__homedown__wrapper
           include ../partials/navigation
           .home__homedown__heroarea
+            h2.home__homedown__heroarea__title Restored cars
+            p.home__homedown__heroarea__subtitle 100% highly skilled professional team
             .home__homedown__heroarea__background
               img.home__homedown__heroarea__hero(alt=homedown.data.background.alt src=homedown.data.background.url)
               .home__homedown__heroarea__quote
                 h2.home__homedown__heroarea__quote__shorter=homedown.data.shorter_quote
                 h2.home__homedown__heroarea__quote__text=homedown.data.quote
             .home__homedown__heroarea__button
+              p.home__homedown__heroarea__button__intro Decades of expertise and strong core values are our strength.
               each item in homedown.data.values
                 a.home__homedown__heroarea__button__link(href="#"+item.name.toLowerCase())
                 button.home__homedown__heroarea__button__item=item.name
               .home__homedown__heroarea__cta
                 a(href="/on-sale")
-                  p.home__homedown__heroarea__cta__text Check our offers!
+                  p.home__homedown__heroarea__cta__text Actual offers!
           .home__homedown__values
             each section in homedown.data.body
               if section.slice_type == "highlights"
