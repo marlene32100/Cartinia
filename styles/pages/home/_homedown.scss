@@ -4,6 +4,10 @@
 .home__homedown__wrapper {
 }
 
+.home__homedown__heroarea {
+  @extend %relative;
+}
+
 .home__homedown__heroarea__title {
   @extend %title;
 }
@@ -24,29 +28,74 @@
 
 .home__homedown__heroarea__quote {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
+  transform: translateX(-50%);
+  width: 94vw;
   text-align: center;
+  @include media("<phone") {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .home__homedown__heroarea__quote__text {
-  opacity: 0;
+  @extend %title;
+  border: 3px solid $color-quarter-spanish-white;
+  padding: 10px 20px;
+  background-color: rgba(250, 250, 250, 0.1);
+  @include media("<phone") {
+    opacity: 0;
+    height: 0;
+  }
 }
 
 .home__homedown__heroarea__quote__shorter {
-  border: 3px solid $color-quarter-spanish-white;
-  padding: 10px 20px;
+  opacity: 0;
+  height: 0;
+  @include media("<phone") {
+    background-color: rgba(250, 250, 250, 0.1);
+    opacity: 1;
+    border: 3px solid $color-quarter-spanish-white;
+    padding: 10px 20px;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    font-size: 25px;
+  }
 }
 
 .home__homedown__heroarea__button {
-  text-align: center;
-  @extend %relative;
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @include media("<phone") {
+    text-align: center;
+    position: relative;
+    grid-template-columns: 1fr;
+  }
 }
 
 .home__homedown__heroarea__button__intro {
-  @extend %description;
+  opacity: 0;
+  font-size: 0;
+  width: 0;
+  height: 0;
+  @include media("<phone") {
+    opacity: 1;
+    font-family: $raleway-light;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    margin: 30px auto 0;
+  }
 }
 
 .home__homedown__heroarea__button__item {
@@ -54,7 +103,8 @@
   display: block;
   padding: 16px 32px;
   border: 3px solid $color-quarter-spanish-white;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: $color-night-blue;
+  text-transform: uppercase;
 }
 
 .home__homedown__heroarea__cta {
@@ -62,9 +112,14 @@
   height: 150px;
   border-radius: 50%;
   background-color: $color-ferrari-red;
-  position: relative;
-
-  margin: 90px auto 60px;
+  position: absolute;
+  right: 10%;
+  bottom: -5%;
+  @include media("<phone") {
+    right: 0;
+    position: relative;
+    margin: 90px auto 60px;
+  }
 }
 .home__homedown__heroarea__cta__text {
   font-size: 20px;
@@ -72,6 +127,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .home__homedown__values {

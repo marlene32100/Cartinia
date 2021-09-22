@@ -1,0 +1,112 @@
+.sold__wrapper {
+  @extend %relative;
+}
+
+.sold__banner {
+}
+
+.sold__banner__image {
+  @extend %banner;
+}
+
+.sold__title {
+  @extend %title;
+  color: $color-quarter-spanish-white;
+}
+
+.sold__caption {
+  @extend %alert;
+  max-width: 320px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  grid-gap: 1px;
+  align-items: center;
+}
+
+.sold__caption__text {
+  place-self: center;
+}
+
+.sold__caption__phone,
+.sold__caption__email {
+  text-align: left;
+  border: 1px solid;
+  padding: 10px;
+  place-self: center;
+}
+
+.sold__caption__phone__text,
+.sold__caption__email__text {
+  display: inline-block;
+}
+
+.sold__caption__icon {
+  fill: $color-ferrari-red;
+  top: 0.25em;
+  position: relative;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.sold__cars__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 10px;
+  column-gap: 10px;
+  @include media("<smallphone") {
+    grid-template-columns: 1fr;
+  }
+  @include media("<phone") {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include media("<tablet") {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.sold__car {
+  width: 100%;
+  margin-bottom: 30px;
+  border: 1px solid $color-night-blue;
+  background-color: $color-quarter-spanish-white;
+  color: $color-night-blue;
+}
+
+.sold__car__media {
+  border: 1px solid $color-night-blue;
+}
+
+.sold__car__media__image {
+  width: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.sold__car__description {
+  @extend %car_description;
+  text-align: center;
+}
+
+.sold__cars__question__wrapper {
+  padding: 30px;
+  text-align: center;
+}
+
+.sold__cars__question__title {
+  @extend %title;
+  color: $color-quarter-spanish-white;
+}
+
+.sold__cars__question__button {
+  border: 1px solid $color-night-blue;
+  padding: 16px 32px;
+  background-color: $color-ferrari-red;
+}
+
+.sold__cars__question__button__label {
+  font-size: 20px;
+  font-family: $quicksand-bold;
+  color: $color-quarter-spanish-white;
+}

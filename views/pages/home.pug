@@ -35,20 +35,20 @@ block content
               img.home__homedown__heroarea__hero(alt=homedown.data.background.alt src=homedown.data.background.url)
               .home__homedown__heroarea__quote
                 h2.home__homedown__heroarea__quote__shorter=homedown.data.shorter_quote
-                h2.home__homedown__heroarea__quote__text=homedown.data.quote
+                h2.home__homedown__heroarea__quote__text=homedown.data.quote[0].text
+            p.home__homedown__heroarea__button__intro Decades of expertise and strong core values are our strength.
             .home__homedown__heroarea__button
-              p.home__homedown__heroarea__button__intro Decades of expertise and strong core values are our strength.
               each item in homedown.data.values
                 a.home__homedown__heroarea__button__link(href="#"+item.name.toLowerCase())
-                button.home__homedown__heroarea__button__item=item.name
-              .home__homedown__heroarea__cta
-                a(href="/on-sale")
-                  p.home__homedown__heroarea__cta__text Actual offers!
+                  button.home__homedown__heroarea__button__item=item.name
+            .home__homedown__heroarea__cta
+              a(href="/on-sale")
+                p.home__homedown__heroarea__cta__text Actual offers!
           .home__homedown__values
             each section in homedown.data.body
               if section.slice_type == "highlights"
                 article.home__homedown__values__article
-                  h1.home__homedown__values__title=section.primary.title[0].text
+                  h1.home__homedown__values__title(id=section.primary.title[0].text.toLowerCase())=section.primary.title[0].text
                   figure.home__homedown__values__media__image
                     img.home__homedown__values__image(alt=section.primary.image.alt src=section.primary.image.url)
                   p.home__homedown__values__description=section.primary.description[0].text

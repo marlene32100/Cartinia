@@ -1,5 +1,28 @@
 %description {
   font-family: $raleway-light;
-  font-size: 14px;
+  font-size: 16px;
   padding: 10px;
+  @include media("<phone") {
+    font-size: 14px;
+  }
+}
+
+%alert {
+  color: $color-ferrari-red;
+  font-family: $raleway-semibold;
+  font-size: 16px;
+  text-align: center;
+  padding: 0 10px 30px;
+  @include media("<phone") {
+    font-size: 14px;
+  }
+}
+
+%car_description {
+  font-family: $raleway-semibold;
+  font-size: 16px;
+  padding: 10px;
+  @include media("<phone") {
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,112 @@
+.on-sale__wrapper {
+  @extend %relative;
+}
+
+.on_sale__banner {
+}
+
+.on_sale__banner__image {
+  @extend %banner;
+}
+
+.on_sale__title {
+  @extend %title;
+  color: $color-quarter-spanish-white;
+}
+
+.on_sale__caption {
+  @extend %alert;
+  max-width: 320px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: space-between;
+  column-gap: 1px;
+  align-items: center;
+}
+
+.on_sale__caption__text {
+  place-self: center;
+}
+
+.on_sale__caption__phone,
+.on_sale__caption__email {
+  text-align: left;
+  border: 1px solid;
+  padding: 10px;
+  place-self: center;
+}
+
+.on_sale__caption__phone__text,
+.on_sale__caption__email__text {
+  display: inline-block;
+}
+
+.on_sale__caption__icon {
+  fill: $color-ferrari-red;
+  top: 0.25em;
+  position: relative;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.on__sale__cars__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 10px;
+  column-gap: 10px;
+  @include media("<smallphone") {
+    grid-template-columns: 1fr;
+  }
+  @include media("<phone") {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include media("<tablet") {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.on_sale__car {
+  width: 100%;
+  margin-bottom: 30px;
+  border: 1px solid $color-quarter-spanish-white;
+  background-color: $color-quarter-spanish-white;
+  color: $color-night-blue;
+}
+
+.on-sale__car__media {
+  border: 1px solid $color-night-blue;
+}
+
+.on_sale__car__media__image {
+  width: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.on_sale__car__description {
+  @extend %car_description;
+  text-align: center;
+}
+
+.on_sale__cars__question__wrapper {
+  padding: 30px;
+  text-align: center;
+}
+
+.on_sale__cars__question__title {
+  @extend %title;
+  color: $color-quarter-spanish-white;
+}
+
+.on_sale__cars__question__button {
+  border: 1px solid $color-night-blue;
+  padding: 16px 32px;
+  background-color: $color-ferrari-red;
+}
+
+.on_sale__cars__question__button__label {
+  font-size: 20px;
+  font-family: $quicksand-bold;
+  color: $color-quarter-spanish-white;
+}

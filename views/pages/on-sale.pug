@@ -9,14 +9,35 @@ block content
     figure.on_sale__banner
       img.on_sale__banner__image(alt=on_sale.data.banner.alt src=on_sale.data.banner.url)
     h1.on_sale__title=on_sale.data.title[0].text
-    p.on_sale__caption=on_sale.data.cta[0].text
-    each car in on_sale.data.cars
-      figure.on-sale__car__media
-        img.on_sale__car__media__image(alt=car.image.alt src=car.image.url)
-      p.on_sale__car__description=car.description[0].text
 
-    each section in on_sale.data.body
-      if section.slice_type === "call_to_action"
-        h3=section.primary.title[0].text
-        a(href=section.primary.button_link.slug)
-          p=section.primary.button_label
+    .on_sale__caption
+      p.on_sale__caption__text
+        | For inquiries:
+
+      .on_sale__caption__phone
+        a(href="tel:"+footer.data.phone.text)
+          svg.on_sale__caption__icon(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24")
+            path(d="M18.48 22.926l-1.193.658c-6.979 3.621-19.082-17.494-12.279-21.484l1.145-.637 3.714 6.467-1.139.632c-2.067 1.245 2.76 9.707 4.879 8.545l1.242-.642 3.711 6.461zm-9.808-22.926l-1.68.975 3.714 6.466 1.681-.975-3.715-6.466zm8.613 14.997l-1.68.975 3.714 6.467 1.681-.975-3.715-6.467z")
+          p.on_sale__caption__phone__text tel
+
+      .on_sale__caption__email
+        a(href="mailto:"+footer.data.email.text)
+          svg.on_sale__caption__icon(xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24")
+            path(d="M11.99 0l-11.99 8.723v15.277h24v-15.277l-12.01-8.723zm.001 2.472l9.793 7.113-6.735 4.588-3.049-2.47-3.049 2.471-6.737-4.589 9.777-7.113zm-9.991 9.386l5.329 3.63-5.329 4.318v-7.948zm.474 10.142l9.526-7.723 9.526 7.723h-19.052zm19.526-2.194l-5.329-4.317 5.329-3.631v7.948z")
+          p.on_sale__caption__email__text mail
+
+    .on__sale__cars__wrapper
+      each car in on_sale.data.cars
+        .on_sale__car
+          figure.on-sale__car__media
+            img.on_sale__car__media__image(alt=car.image.alt src=car.image.url)
+          p.on_sale__car__description=car.description[0].text
+
+    .on_sale__cars__question__wrapper
+      each section in on_sale.data.body
+        if section.slice_type === "call_to_action"
+          .on_sale__cars__question
+            h3.on_sale__cars__question__title=section.primary.title[0].text
+            a(href=section.primary.button_link.slug)
+              button.on_sale__cars__question__button
+                p.on_sale__cars__question__button__label=section.primary.button_label

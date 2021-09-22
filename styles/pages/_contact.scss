@@ -1,0 +1,43 @@
+.contact__wrapper {
+}
+.contact__banner {
+}
+.contact__banner__image {
+  @extend %banner;
+}
+.contact__title {
+  @extend %title;
+}
+.contact__details {
+  text-align: center;
+  @extend %description;
+  color: $color-quarter-spanish-white;
+}
+.contact__details__address {
+  border: 1px solid $color-quarter-spanish-white;
+  padding: 30px;
+  width: fit-content;
+  margin: auto;
+}
+
+.contact__details__icon {
+  fill: $color-quarter-spanish-white;
+}
+
+.contact__details__address__text {
+}
+.contact__details__address__phone {
+  display: block;
+  padding-top: 30px;
+}
+.contact__details__address__email {
+  display: block;
+  padding-top: 30px;
+}
+
+.contact__details__address__phone__text,
+.contact__details__address__email__text {
+  padding-top: 15px;
+}
+.contact__maps {
+}

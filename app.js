@@ -77,7 +77,7 @@ app.get("/", async (req, res) => {
   const defaults = await handleRequest(api);
   const home = await api.getSingle("home");
   const homedown = await api.getSingle("homedown");
-  console.log(homedown.data.values[0].description);
+  console.log(homedown.data.body);
   res.render("pages/home", { ...defaults, home, homedown });
 });
 

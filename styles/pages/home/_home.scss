@@ -17,95 +17,124 @@
 }
 
 .home__landing__left {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  @include media(">=phone") {
-    position: relative;
+  position: relative;
+  width: 50vw;
+
+  @include media("<phone") {
+    position: absolute;
     width: 100vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
   }
 }
 
 .home__landing__background {
-  @extend %fullscreen;
-  @include media(">=phone") {
+  @include media("<phone") {
+    height: 60vh;
     width: 100vw;
-    overflow: hidden;
   }
 }
 
 .home__landing__background__image {
-  height: 50%;
-  width: 100%;
-  z-index: 1;
+  width: 50vw;
+  height: 100vh;
   object-fit: cover;
-  @include media(">=phone") {
-    width: 80vw;
+  -o-object-fit: cover;
+  object-position: center;
+  -o-object-position: center center;
+  overflow: hidden;
+
+  @include media("<phone") {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
     object-fit: cover;
-    -o-object-fit: cover;
-    object-position: center;
-    -o-object-position: center center;
-    overflow: hidden;
   }
 }
 
 .home__landing__right {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-  @include media(">=phone") {
-    position: relative;
-    width: 100vw;
+  right: 0;
+  width: 50vw;
+
+  @include media("<phone") {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 50vh;
+    z-index: 2;
   }
 }
+
 .home__landing__media {
-  margin-top: 70%;
-  @include media(">=phone") {
-    width: 180px;
+  width: 180px;
+  margin-left: auto;
+  margin-right: 30px;
+  @include media("<phone") {
+    margin-top: 30%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
 .home__landing__media__image {
   height: 180px;
   width: 180px;
-  display: block;
-
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 30px;
+  @include media("<phone") {
+    height: 180px;
+    width: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .home__landing__introduction {
-  margin-top: 20px;
-  @include media(">=phone") {
-    margin-top: 40%;
+  margin-top: 50%;
+  @include media("<tablet") {
+    margin-top: 70%;
+  }
+  @include media("<phone") {
+    margin-top: 20px;
   }
 }
 
 .home__landing__introduction__title {
-  font-size: 50px;
   font-family: $airstream;
+  font-size: 90px;
   text-align: center;
-  padding: 10px;
-  @include media(">=phone") {
-    font-size: 70px;
+  @include media("<phone") {
+    font-size: 50px;
+    padding: 10px;
   }
 }
 
 .home__landing__introduction__subtitle {
   font-family: $quicksand;
-  font-size: 18px;
+  font-size: 25px;
   text-transform: uppercase;
   text-align: center;
+  @include media("<phone") {
+    font-size: 18px;
+  }
 }
 
 .home__landing__countries {
-  text-align: center;
-  line-height: normal;
-  margin-top: 5%;
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  @include media("<phone") {
+    position: relative;
+    text-align: center;
+    line-height: normal;
+    top: 5%;
+    right: 0;
+  }
 }
 
 .home__landing__scroll {
@@ -118,6 +147,9 @@
   text-align: center;
   font-size: 12px;
   font-style: italic;
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
 }
 
 .home__landing__scroll__text::after,

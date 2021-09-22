@@ -7,5 +7,7 @@ block content
   include ../partials/navigation
   .team__wrapper
     h1.team__title=team.data.title[0].text
-    img.team_image(alt=team.data.image.alt src=team.data.image.url)
+    .team__hero
+    figure.team__hero__media
+      img.team__hero__media__image(alt=team.data.image.alt src=team.data.image.url)
 
