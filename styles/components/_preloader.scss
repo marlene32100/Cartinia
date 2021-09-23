@@ -1,0 +1,24 @@
+.preloader {
+  @extend %cover;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: $color-night-blue;
+  color: $color-quarter-spanish-white;
+  z-index: 10;
+}
+
+.preloader__text {
+  @extend %title;
+  max-width: 660px;
+}
+
+.preloader__number {
+  position: absolute;
+  bottom: 73px;
+  left: 50%;
+  transform: translateX(-50%);
+  @extend %description;
+  color: $color-quarter-spanish-white;
+}
