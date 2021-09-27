@@ -4,12 +4,15 @@ export default class Home extends Page {
   constructor() {
     super({
       id: "home",
-      element: ".home",
+      element: ".home__wrapper",
       elements: {
-        wrapper: ".home__wrapper",
+        landing: ".home__landing",
+        button: ".home__homedown__heroarea__button__item",
       },
     });
+  }
 
-    console.log("Home");
+  create() {
+    super.create();
   }
 }

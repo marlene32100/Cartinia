@@ -55,14 +55,15 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
   column-gap: 10px;
-  @include media("<smallphone") {
-    grid-template-columns: 1fr;
+
+  @include media("<tablet") {
+    grid-template-columns: 1fr 1fr 1fr;
   }
   @include media("<phone") {
     grid-template-columns: 1fr 1fr;
   }
-  @include media("<tablet") {
-    grid-template-columns: 1fr 1fr 1fr;
+  @include media("<smallphone") {
+    grid-template-columns: 1fr;
   }
 }
 

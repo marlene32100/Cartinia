@@ -1,11 +1,11 @@
 extends ../base
 
 block variables
-  - var template = "on-sale"
+  - var template = "sale"
 
 block content
   include ../partials/navigation
-  .on-sale__wrapper
+  .sale__wrapper
     figure.on_sale__banner
       img.on_sale__banner__image(alt=on_sale.data.banner.alt src=on_sale.data.banner.url)
     h1.on_sale__title=on_sale.data.title[0].text

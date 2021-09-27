@@ -2,8 +2,14 @@ import Page from "classes/Page";
 
 export default class Sold extends Page {
   constructor() {
-    super({ id: "sold" });
+    super({
+      id: "sold",
+      element: ".sold__wrapper",
+      elements: {},
+    });
+  }
 
-    console.log("Sold");
+  create() {
+    super.create();
   }
 }
