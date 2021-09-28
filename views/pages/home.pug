@@ -4,18 +4,18 @@ block variables
   - var template = "home"
 
 block content
-  //include ../partials/preloader
+  include ../partials/preloader
   .home
     .home__wrapper
       section.home__landing
         .home__landing__left
           figure.home__landing__background
-            img.home__landing__background__image(alt=home.data.hero.alt src=home.data.hero.url)
+            img.home__landing__background__image(alt=home.data.hero.alt data-src=home.data.hero.url)
         .home__landing__scroll
           p.home__landing__scroll__text=home.data.scroll[0].text
         .home__landing__right
           figure.home__landing__media
-            img.home__landing__media__image(alt=home.data.logo.alt src=home.data.logo.url)
+            img.home__landing__media__image(alt=home.data.logo.alt data-src=home.data.logo.url)
           .home__landing__introduction
             h2.home__landing__introduction__title=home.data.title[0].text
             h3.home__landing__introduction__subtitle=home.data.subtitle[0].text
@@ -32,7 +32,7 @@ block content
             h2.home__homedown__heroarea__title Restored cars
             p.home__homedown__heroarea__subtitle 100% highly skilled professional team
             .home__homedown__heroarea__background
-              img.home__homedown__heroarea__hero(alt=homedown.data.background.alt src=homedown.data.background.url)
+              img.home__homedown__heroarea__hero(alt=homedown.data.background.alt data-src=homedown.data.background.url)
               .home__homedown__heroarea__quote
                 h2.home__homedown__heroarea__quote__shorter=homedown.data.shorter_quote
                 h2.home__homedown__heroarea__quote__text=homedown.data.quote[0].text
@@ -50,7 +50,7 @@ block content
                 article.home__homedown__values__article
                   h1.home__homedown__values__title(id=section.primary.title[0].text.toLowerCase())=section.primary.title[0].text
                   figure.home__homedown__values__media__image
-                    img.home__homedown__values__image(alt=section.primary.image.alt src=section.primary.image.url)
+                    img.home__homedown__values__image(alt=section.primary.image.alt data-src=section.primary.image.url)
                   p.home__homedown__values__description=section.primary.description[0].text
 
 

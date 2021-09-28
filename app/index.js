@@ -1,3 +1,4 @@
+import Preloader from "components/Preloader";
 import Home from "pages/Home";
 import Team from "pages/Team";
 import Contact from "pages/Contact";
@@ -8,10 +9,16 @@ import each from "lodash/each";
 
 class App {
   constructor() {
+    this.createPreloader();
     this.createContent();
     this.createPages();
 
     this.addLinkListeners();
+  }
+
+  createPreloader() {
+    this.preloader = new Preloader();
+    this.preloader.once("completed", this.onPreloaded.bind(this));
   }
 
   createContent() {
@@ -34,6 +41,11 @@ class App {
     console.log(this.pages);
   }
 
+  onPreloaded() {
+    console.log("I should be hiding now");
+    this.preloader.destroy();
+  }
+
   async onChange(url) {
     await this.page.hide();
     const request = await window.fetch(url);
@@ -52,6 +64,7 @@ class App {
       this.page = this.pages[this.template];
       this.page.create();
       this.page.show();
+      this.addLinkListeners();
     } else {
       console.log("Error");
     }
@@ -59,16 +72,21 @@ class App {
 
   addLinkListeners() {
     const links = document.querySelectorAll("a");
+    const menu = document.querySelector(".navigation__hamburger");
 
     each(links, (link) => {
       link.onclick = (event) => {
         event.preventDefault();
-
         const { href } = link;
 
-        this.onChange(href);
+        if (link.className === "navigation__hamburger__link") {
+          const actualUrl = window.location.href;
+          this.onChange(actualUrl + "#navigation__open");
+        } else {
+          this.onChange(href);
 
-        console.log(event, href);
+          console.log("I am a normal link");
+        }
       };
     });
   }
