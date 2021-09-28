@@ -1,6 +1,7 @@
+import GSAP from "gsap";
 import Component from "classes/Component";
 import each from "lodash/each";
-import GSAP from "gsap";
+import { split } from "utils/text";
 
 export default class Preloader extends Component {
   constructor() {
@@ -12,8 +13,14 @@ export default class Preloader extends Component {
         images: document.querySelectorAll("img"),
       },
     });
+
+    this.elements.titleSpan = split({
+      element: this.elements.title,
+      expression: "<br>",
+    });
+
     this.length = 0;
-    console.log(this.element, this.elements);
+
     this.createLoader();
   }
 

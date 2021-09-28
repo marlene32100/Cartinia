@@ -1,11 +1,6 @@
 import each from "lodash/each";
 
-/**
- * Function that splits text into spans
- * @param {string || HTMLElement} element
- * @param {string} expression
- * @param {bool} append
- */
+// from Bizarro project at github https://github.com/lhbizarro/bizar.ro/blob/master/app/utils/text.js
 export function split({ element, expression = " ", append = true }) {
   const words = splitText(element.innerHTML.toString().trim(), expression);
 
@@ -49,9 +44,6 @@ export function split({ element, expression = " ", append = true }) {
 }
 
 export function calculate(spans) {
-  if (!spans.length) {
-    return;
-  }
   const lines = [];
   let words = [];
 
