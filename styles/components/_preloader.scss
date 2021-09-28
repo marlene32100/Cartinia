@@ -12,6 +12,9 @@
 .preloader__text {
   @extend %title;
   max-width: 660px;
+  span {
+    display: inline-block;
+  }
 }
 
 .preloader__number {
