@@ -10,18 +10,30 @@
 }
 
 .preloader__text {
-  @extend %title;
+  font-size: 0;
   max-width: 660px;
   span {
     display: inline-block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  span span {
+    @extend %title;
   }
 }
 
 .preloader__number {
   position: absolute;
+  overflow: hidden;
   bottom: 73px;
   left: 50%;
   transform: translateX(-50%);
   @extend %description;
   color: $color-quarter-spanish-white;
+}
+
+.preloader__number__text {
+  display: inline-block;
 }

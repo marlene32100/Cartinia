@@ -10,14 +10,22 @@ export default class Preloader extends Component {
       elements: {
         title: ".preloader__text",
         number: ".preloader__number",
+        numberText: ".preloader__number__text",
         images: document.querySelectorAll("img"),
       },
     });
 
-    this.elements.titleSpan = split({
+    split({
       element: this.elements.title,
       expression: "<br>",
     });
+
+    split({
+      element: this.elements.title,
+      expression: "<br>",
+    });
+
+    this.elements.titleSpan = this.elements.title.querySelectorAll("span span");
 
     this.length = 0;
 
@@ -39,7 +47,7 @@ export default class Preloader extends Component {
       this.onLoaded();
     }
 
-    this.elements.number.innerHTML = `${Math.round(percentage)}%`;
+    this.elements.numberText.innerHTML = `${Math.round(percentage)}%`;
   }
 
   onLoaded() {
@@ -49,11 +57,22 @@ export default class Preloader extends Component {
       });
       this.animateOut.to(this.elements.titleSpan, {
         autoAlpha: 0,
-        duration: 1.5,
+        duration: 2,
         ease: "expo.out",
-        stagger: 0.1,
-        y: -100,
+        stagger: 0.2,
+        y: -50,
       });
+      this.animateOut.to(
+        this.elements.number,
+        {
+          autoAlpha: 0,
+          duration: 2,
+          ease: "expo.out",
+          stagger: 0.2,
+          y: -50,
+        },
+        "-=2"
+      );
       this.animateOut.to(this.element, { autoAlpha: 0 });
       this.animateOut.call((_) => {
         this.emit("completed");
