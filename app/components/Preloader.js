@@ -47,6 +47,13 @@ export default class Preloader extends Component {
       this.animateOut = GSAP.timeline({
         delay: 2,
       });
+      this.animateOut.to(this.elements.titleSpan, {
+        autoAlpha: 0,
+        duration: 1.5,
+        ease: "expo.out",
+        stagger: 0.1,
+        y: -100,
+      });
       this.animateOut.to(this.element, { autoAlpha: 0 });
       this.animateOut.call((_) => {
         this.emit("completed");
