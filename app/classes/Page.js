@@ -54,4 +54,10 @@ export default class Page {
       });
     });
   }
+
+  goBack() {
+    return new Promise((resolve) => {
+      GSAP.to(this.element, { autoAlpha: 0 });
+    });
+  }
 }

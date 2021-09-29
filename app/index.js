@@ -69,9 +69,12 @@ class App {
     }
   }
 
+  openMenu() {
+    this.navigation.goFront();
+  }
+
   addLinkListeners() {
     const links = document.querySelectorAll("a");
-    const menu = document.querySelector(".navigation__hamburger");
 
     each(links, (link) => {
       link.onclick = (event) => {
@@ -83,12 +86,13 @@ class App {
           link.className === "navigation__link"
         ) {
           const typeOfLink = link.className;
-          console.log(typeOfLink);
           if (typeOfLink === "navigation__link") {
             const actualUrl = window.location.pathname;
             actualUrl == "/"
               ? window.scrollTo({ top: 0, behavior: "smooth" })
               : this.onChange(href);
+          } else if (typeOfLink === "navigation__hamburger__link") {
+            this.openMenu();
           }
         } else if (
           link.className === "home__homedown__heroarea__button__link"
