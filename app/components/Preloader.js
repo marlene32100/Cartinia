@@ -73,14 +73,19 @@ export default class Preloader extends Component {
         },
         "-=2"
       );
-      this.animateOut.to(this.element, { autoAlpha: 0 });
+      this.animateOut.to(this.element, {
+        duration: 2,
+        autoAlpha: 0,
+      });
       this.animateOut.call((_) => {
         this.emit("completed");
+        resolve();
       });
     });
   }
 
   destroy() {
     this.element.parentNode.removeChild(this.element);
+    console.log("Destroyed");
   }
 }

@@ -1,4 +1,5 @@
-import Preloader from "components/Preloader";
+//import Preloader from "components/Preloader";
+//import Navigation from "components/Navigation";
 import Home from "pages/Home";
 import Team from "pages/Team";
 import Contact from "pages/Contact";
@@ -9,17 +10,22 @@ import each from "lodash/each";
 
 class App {
   constructor() {
-    this.createPreloader();
+    //this.createPreloader();
+    //this.createNavigation();
     this.createContent();
     this.createPages();
 
     this.addLinkListeners();
   }
 
-  createPreloader() {
-    this.preloader = new Preloader();
-    this.preloader.once("completed", this.onPreloaded.bind(this));
-  }
+  //createPreloader() {
+  //  this.preloader = new Preloader();
+  //  this.preloader.once("completed", this.onPreloaded.bind(this));
+  //}
+
+  //createNavigation() {
+  //  this.navigation = new Navigation();
+  //}
 
   createContent() {
     this.content = document.querySelector(".content");
@@ -38,13 +44,11 @@ class App {
     this.page = this.pages[this.template];
     this.page.create();
     this.page.show();
-    console.log(this.pages);
   }
 
-  onPreloaded() {
-    console.log("I should be hiding now");
-    this.preloader.destroy();
-  }
+  //onPreloaded() {
+  //  this.preloader.destroy();
+  //}
 
   async onChange(url) {
     await this.page.hide();
@@ -82,6 +86,15 @@ class App {
         if (link.className === "navigation__hamburger__link") {
           const actualUrl = window.location.href;
           this.onChange(actualUrl + "#navigation__open");
+        } else if (
+          link.className === "home__homedown__heroarea__button__link"
+        ) {
+          const address = link.href;
+          const pathArray = address.split("#");
+          const section = pathArray[1];
+          document
+            .getElementById(section)
+            .scrollIntoView({ behavior: "smooth" });
         } else {
           this.onChange(href);
 

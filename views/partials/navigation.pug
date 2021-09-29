@@ -4,8 +4,7 @@ nav.navigation
       a.navigation__link(href="/")
         img.navigation__link__icon(alt=navbar.data.logo.alt data-src=navbar.data.logo.url)
       .navigation__hamburger
-        a.navigation__hamburger__link(href="")
-          include ./hamburger
+        include ./hamburger
     .navigation__open#navigation__open
       ul.navigation__list
         each item in navigation.data.link

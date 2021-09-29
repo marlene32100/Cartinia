@@ -39,7 +39,7 @@ block content
             p.home__homedown__heroarea__button__intro Decades of expertise and strong core values are our strength.
             .home__homedown__heroarea__button
               each item in homedown.data.values
-                a.home__homedown__heroarea__button__link(href="#"+item.name.toLowerCase())
+                a.home__homedown__heroarea__button__link(href="/#"+item.name.toLowerCase())
                   button.home__homedown__heroarea__button__item=item.name
             .home__homedown__heroarea__cta
               a(href="/on-sale")

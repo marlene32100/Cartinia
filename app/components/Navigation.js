@@ -1,18 +1,26 @@
 import Component from "classes/Component";
-import GSAP from "gsap";
+import each from "lodash/each";
 
 export default class Navigation extends Component {
-  constructor({ template }) {
+  constructor() {
     super({
       element: ".navigation",
-      elements: {},
+      elements: {
+        hamburger: ".navigation__hamburger",
+        menu: ".navigation__open",
+      },
     });
-
-    //this.onNavigation(template);
+    this.createLoader();
   }
 
-  onNavigation() {
-    const hamburger = document.querySelector(".navigation__hamburger");
-    hamburger.addEventListener("click", openMenu());
+  createLoader() {
+    each(this.elements.images, (element) => {
+      element.onload = (_) => this.onAssetLoaded(element);
+      element.src = element.getAttribute("data-src");
+    });
+  }
+
+  onAssetLoaded(element) {
+    console.log(element);
   }
 }
