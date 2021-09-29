@@ -1,5 +1,5 @@
-//import Preloader from "components/Preloader";
-//import Navigation from "components/Navigation";
+import Navigation from "components/Navigation";
+import Footer from "components/Footer";
 import Home from "pages/Home";
 import Team from "pages/Team";
 import Contact from "pages/Contact";
@@ -10,22 +10,21 @@ import each from "lodash/each";
 
 class App {
   constructor() {
-    //this.createPreloader();
-    //this.createNavigation();
     this.createContent();
+    this.createNavigation();
+    this.createFooter();
     this.createPages();
 
     this.addLinkListeners();
   }
 
-  //createPreloader() {
-  //  this.preloader = new Preloader();
-  //  this.preloader.once("completed", this.onPreloaded.bind(this));
-  //}
+  createNavigation() {
+    this.navigation = new Navigation({ template: this.template });
+  }
 
-  //createNavigation() {
-  //  this.navigation = new Navigation();
-  //}
+  createFooter() {
+    this.footer = new Footer({ template: this.template });
+  }
 
   createContent() {
     this.content = document.querySelector(".content");
@@ -45,10 +44,6 @@ class App {
     this.page.create();
     this.page.show();
   }
-
-  //onPreloaded() {
-  //  this.preloader.destroy();
-  //}
 
   async onChange(url) {
     await this.page.hide();
@@ -83,9 +78,18 @@ class App {
         event.preventDefault();
         const { href } = link;
 
-        if (link.className === "navigation__hamburger__link") {
-          const actualUrl = window.location.href;
-          this.onChange(actualUrl + "#navigation__open");
+        if (
+          link.className === "navigation__hamburger__link" ||
+          link.className === "navigation__link"
+        ) {
+          const typeOfLink = link.className;
+          console.log(typeOfLink);
+          if (typeOfLink === "navigation__link") {
+            const actualUrl = window.location.pathname;
+            actualUrl == "/"
+              ? window.scrollTo({ top: 0, behavior: "smooth" })
+              : this.onChange(href);
+          }
         } else if (
           link.className === "home__homedown__heroarea__button__link"
         ) {

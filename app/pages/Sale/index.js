@@ -1,4 +1,5 @@
 import Page from "classes/Page";
+import Navigation from "components/Navigation";
 
 export default class Sale extends Page {
   constructor() {
@@ -9,9 +10,14 @@ export default class Sale extends Page {
         banner: ".on_sale__banner",
       },
     });
+    this.createNavigation();
   }
 
   create() {
     super.create();
+  }
+
+  createNavigation() {
+    this.navigation = new Navigation();
   }
 }

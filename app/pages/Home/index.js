@@ -27,7 +27,7 @@ export default class Home extends Page {
 
   createNavigation() {
     this.navigation = new Navigation();
-    this.navigation.once("completed", this.onPreloadedNav.bind(this));
+    //this.navigation.once("completed", this.onPreloadedNav.bind(this));
   }
 
   onPreloaded() {
