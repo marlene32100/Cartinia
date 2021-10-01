@@ -8,21 +8,64 @@
 }
 
 %alert {
-  color: $color-ferrari-red;
+  height: 50px;
+  width: 50%;
+  margin: auto;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: $color-ferrari-red;
   font-family: $raleway-semibold;
   font-size: 16px;
   text-align: center;
   padding: 0 10px 30px;
+  position: relative;
   @include media("<phone") {
     font-size: 14px;
+    width: 80%;
   }
+}
+
+%caption_text {
+  display: inline-block;
+  color: $color-quarter-spanish-white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%first_marquee {
+  @include keyframes(marquee) {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @include animate(marquee, 10s, linear, infinite);
+}
+
+%second_marquee {
+  @include keyframes(marquee2) {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-200%);
+    }
+  }
+  @include animate(marquee2, 10s, linear, infinite);
 }
 
 %car_description {
   font-family: $raleway-semibold;
   font-size: 16px;
   margin: 0;
-  border-right: 0.0625rem solid #000;
+  border: 0.0625rem solid $color-night-blue;
+  background-color: $color-quarter-spanish-white;
+  color: $color-night-blue;
   padding: 1.375rem 0.9375rem;
   // font-size: 1.125rem;
   line-height: 1rem;

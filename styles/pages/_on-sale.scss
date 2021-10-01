@@ -16,30 +16,30 @@
 
 .on_sale__caption {
   @extend %alert;
-  max-width: 320px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  justify-content: space-between;
-  column-gap: 1px;
-  align-items: center;
+}
+
+.on_sale__caption__text,
+.on_sale__caption__text__two {
+  @extend %caption_text;
 }
 
 .on_sale__caption__text {
-  place-self: center;
+  @extend %first_marquee;
+}
+
+.on_sale__caption__text__two {
+  @extend %second_marquee;
+  animation-delay: 5s;
 }
 
 .on_sale__caption__phone,
 .on_sale__caption__email {
-  text-align: left;
-  border: 1px solid;
-  padding: 10px;
-  place-self: center;
+  // text-align: left;
 }
 
 .on_sale__caption__phone__text,
 .on_sale__caption__email__text {
-  display: inline-block;
+  // display: inline-block;
 }
 
 .on_sale__caption__icon {
@@ -51,37 +51,49 @@
 }
 
 .on__sale__cars__wrapper {
+  width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
+  margin: auto;
+  margin-top: 90px;
   column-gap: 10px;
-  @include media("<smallphone") {
-    grid-template-columns: 1fr;
+
+  @include media("<tablet") {
+    grid-template-columns: 1fr 1fr 1fr;
   }
   @include media("<phone") {
     grid-template-columns: 1fr 1fr;
   }
-  @include media("<tablet") {
-    grid-template-columns: 1fr 1fr 1fr;
+  @include media("<smallphone") {
+    grid-template-columns: 1fr;
   }
 }
 
 .on_sale__car {
+  position: relative;
   width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-bottom: 30px;
-  border: 1px solid $color-quarter-spanish-white;
-  background-color: $color-quarter-spanish-white;
-  color: $color-night-blue;
 }
 
 .on-sale__car__media {
   border: 1px solid $color-night-blue;
+  overflow: hidden;
 }
 
 .on_sale__car__media__image {
   width: 100%;
   object-fit: contain;
   padding: 10px;
+  transition: transform 0.5s ease;
+  background-color: $color-quarter-spanish-white;
+}
+
+.on_sale__car__media__image:hover {
+  transform: scale(1.5);
 }
 
 .on_sale__car__description {

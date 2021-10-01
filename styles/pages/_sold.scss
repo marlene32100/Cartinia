@@ -54,6 +54,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
+  margin: auto;
   column-gap: 10px;
 
   @include media("<tablet") {
@@ -77,12 +78,18 @@
 
 .sold__car__media {
   border: 1px solid $color-night-blue;
+  overflow: hidden;
 }
 
 .sold__car__media__image {
   width: 100%;
   object-fit: contain;
   padding: 10px;
+  transition: transform 0.5s ease;
+}
+
+.sold__car__media__image:hover {
+  transform: scale(1.5);
 }
 
 .sold__car__description {

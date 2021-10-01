@@ -26,6 +26,8 @@
 
 .navigation__hamburger__link {
   fill: $color-quarter-spanish-white;
+  height: 40px;
+  width: 40px;
 }
 .navigation__open {
   height: 0;
@@ -35,6 +37,7 @@
 .navigation__list {
 }
 .navigation__list__item {
+  padding: 5px;
 }
 .navigation__list__link {
 }

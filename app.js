@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const Prismic = require("@prismicio/client");
 var PrismicDOM = require("prismic-dom");
-
 // Initialize the prismic.io api
 const initApi = (req) => {
   return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
