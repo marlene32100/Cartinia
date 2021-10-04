@@ -30,15 +30,13 @@
   display: inline-block;
   color: $color-quarter-spanish-white;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 15%;
 }
 
 %first_marquee {
   @include keyframes(marquee) {
     from {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
     to {
       transform: translateX(-100%);

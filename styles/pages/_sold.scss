@@ -16,45 +16,41 @@
 
 .sold__caption {
   @extend %alert;
-  max-width: 320px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
-  grid-gap: 1px;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .sold__caption__text {
-  place-self: center;
+  @extend %caption_text;
+  @extend %first_marquee;
+  padding-left: 100%;
 }
 
 .sold__caption__phone,
 .sold__caption__email {
-  text-align: left;
-  border: 1px solid;
-  padding: 10px;
-  place-self: center;
 }
 
 .sold__caption__phone__text,
 .sold__caption__email__text {
-  display: inline-block;
 }
 
 .sold__caption__icon {
-  fill: $color-ferrari-red;
+  fill: $color-quarter-spanish-white;
   top: 0.25em;
   position: relative;
   display: inline-block;
-  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .sold__cars__wrapper {
+  width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
   margin: auto;
+  margin-top: 90px;
   column-gap: 10px;
 
   @include media("<tablet") {
@@ -69,11 +65,11 @@
 }
 
 .sold__car {
+  position: relative;
   width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-bottom: 30px;
-  border: 1px solid $color-night-blue;
-  background-color: $color-quarter-spanish-white;
-  color: $color-night-blue;
 }
 
 .sold__car__media {
@@ -86,6 +82,7 @@
   object-fit: contain;
   padding: 10px;
   transition: transform 0.5s ease;
+  background-color: $color-quarter-spanish-white;
 }
 
 .sold__car__media__image:hover {

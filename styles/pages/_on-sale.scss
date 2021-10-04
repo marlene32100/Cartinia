@@ -16,6 +16,9 @@
 
 .on_sale__caption {
   @extend %alert;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .on_sale__caption__text,
@@ -25,11 +28,12 @@
 
 .on_sale__caption__text {
   @extend %first_marquee;
+  padding-left: 100%;
 }
 
 .on_sale__caption__text__two {
   @extend %second_marquee;
-  animation-delay: 5s;
+  animation-delay: 10s;
 }
 
 .on_sale__caption__phone,
@@ -43,11 +47,11 @@
 }
 
 .on_sale__caption__icon {
-  fill: $color-ferrari-red;
+  fill: $color-quarter-spanish-white;
   top: 0.25em;
   position: relative;
   display: inline-block;
-  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .on__sale__cars__wrapper {

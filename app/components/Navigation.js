@@ -3,7 +3,7 @@ import each from "lodash/each";
 import GSAP from "gsap";
 
 export default class Navigation extends Component {
-  constructor() {
+  constructor({ template }) {
     super({
       element: ".navigation",
       elements: {
@@ -16,8 +16,12 @@ export default class Navigation extends Component {
       },
     });
     this.elements.links = this.elements.menu.querySelectorAll("li");
-
+    this.onChange(template);
     this.createLoader();
+  }
+
+  onChange(template) {
+    console.log(template);
   }
 
   createLoader() {
