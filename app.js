@@ -79,6 +79,14 @@ app.get("/", async (req, res) => {
   res.render("pages/home", { ...defaults, home, homedown });
 });
 
+app.get("/home", async (req, res) => {
+  const api = await initApi(req);
+  const defaults = await handleRequest(api);
+  const home = await api.getSingle("home");
+  const homedown = await api.getSingle("homedown");
+  res.render("pages/home", { ...defaults, home, homedown });
+});
+
 app.get("/team", async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
@@ -86,7 +94,7 @@ app.get("/team", async (req, res) => {
   res.render("pages/team", { ...defaults, team });
 });
 
-app.get("/on-sale", async (req, res) => {
+app.get("/sale", async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
   const on_sale = await api.getSingle("on_sale");

@@ -81,18 +81,29 @@ class App {
       link.onclick = (event) => {
         event.preventDefault();
         const { href } = link;
+        console.log(event);
+
+        this.onChange({ url: href });
 
         if (
           link.className === "navigation__hamburger__link" ||
           link.className === "navigation__link"
         ) {
+          console.log("Nav link");
           const typeOfLink = link.className;
-          if (typeOfLink === "navigation__link") {
+          if (typeOfLink == "navigation__link") {
+            console.log("I am the logo on the left");
             const actualUrl = window.location.pathname;
             actualUrl == "/"
               ? window.scrollTo({ top: 0, behavior: "smooth" })
               : this.onChange(href);
-          } else if (typeOfLink === "navigation__hamburger__link") {
+          } else {
+            const address = link.href;
+            const pathArray = address.split("#");
+            const section = pathArray[1];
+            document
+              .getElementById(section)
+              .scrollIntoView({ behavior: "smooth" });
             this.openMenu();
           }
         } else if (
@@ -106,8 +117,6 @@ class App {
             .scrollIntoView({ behavior: "smooth" });
         } else {
           this.onChange(href);
-
-          console.log("I am a normal link");
         }
       };
     });
