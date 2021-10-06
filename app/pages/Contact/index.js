@@ -1,5 +1,4 @@
 import Page from "classes/Page";
-import Navigation from "components/Navigation";
 
 export default class Contact extends Page {
   constructor() {
@@ -8,14 +7,9 @@ export default class Contact extends Page {
       element: ".contact__wrapper",
       elements: {},
     });
-    this.createNavigation();
   }
 
   create() {
     super.create();
-  }
-
-  createNavigation() {
-    this.navigation = new Navigation();
   }
 }

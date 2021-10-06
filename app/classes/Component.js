@@ -2,7 +2,7 @@ import EventEmitter from "events";
 import each from "lodash/each";
 
 export default class Component extends EventEmitter {
-  constructor({ element, elements }) {
+  constructor({ element, elements = {} }) {
     // need to call 'super' to access extended class
     // 'super' initializes constructor of parent class
     super();

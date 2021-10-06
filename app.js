@@ -44,6 +44,9 @@ const handleLinkResolver = (doc) => {
   if (doc == "contact") {
     return "/contact";
   }
+  if (doc == "menu") {
+    return "/open-menu";
+  }
 };
 
 // Middleware to inject prismic context
@@ -59,11 +62,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 const handleRequest = async (api) => {
+  const home = await api.getSingle("home");
   const meta = await api.getSingle("meta");
   const navbar = await api.getSingle("navbar");
   const navigation = await api.getSingle("navigation");
   const footer = await api.getSingle("footer");
   return {
+    home,
     meta,
     navbar,
     navigation,
@@ -74,17 +79,15 @@ const handleRequest = async (api) => {
 app.get("/", async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
-  const home = await api.getSingle("home");
   const homedown = await api.getSingle("homedown");
-  res.render("pages/home", { ...defaults, home, homedown });
+  res.render("pages/home", { ...defaults, homedown });
 });
 
 app.get("/home", async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
-  const home = await api.getSingle("home");
   const homedown = await api.getSingle("homedown");
-  res.render("pages/home", { ...defaults, home, homedown });
+  res.render("pages/home", { ...defaults, homedown });
 });
 
 app.get("/team", async (req, res) => {
@@ -95,6 +98,13 @@ app.get("/team", async (req, res) => {
 });
 
 app.get("/sale", async (req, res) => {
+  const api = await initApi(req);
+  const defaults = await handleRequest(api);
+  const on_sale = await api.getSingle("on_sale");
+  res.render("pages/on-sale", { ...defaults, on_sale });
+});
+
+app.get("/on-sale", async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
   const on_sale = await api.getSingle("on_sale");
@@ -113,6 +123,12 @@ app.get("/contact", async (req, res) => {
   const defaults = await handleRequest(api);
   const contact = await api.getSingle("contact");
   res.render("pages/contact", { ...defaults, contact });
+});
+
+app.get("/menu", async (req, res) => {
+  const api = await initApi(req);
+  const defaults = await handleRequest(api);
+  res.render("pages/open-menu", { ...defaults });
 });
 
 app.listen(port, () => {

@@ -1,21 +1,29 @@
 import Navigation from "components/Navigation";
+import Preloader from "components/Preloader";
 import Footer from "components/Footer";
 import Home from "pages/Home";
 import Team from "pages/Team";
 import Contact from "pages/Contact";
 import Sale from "pages/Sale";
 import Sold from "pages/Sold";
+import Menu from "pages/Menu";
 
 import each from "lodash/each";
 
 class App {
   constructor() {
+    this.createPreloader();
     this.createContent();
     this.createNavigation();
     this.createFooter();
     this.createPages();
 
     this.addLinkListeners();
+  }
+
+  createPreloader() {
+    this.preloader = new Preloader();
+    this.preloader.once("completed", this.onPreloaded.bind(this));
   }
 
   createNavigation() {
@@ -38,6 +46,7 @@ class App {
       sale: new Sale(),
       sold: new Sold(),
       contact: new Contact(),
+      menu: new Menu(),
     };
 
     this.page = this.pages[this.template];
@@ -45,7 +54,12 @@ class App {
     this.page.show();
   }
 
-  async onChange(url) {
+  onPreloaded() {
+    this.preloader.destroy();
+    console.log("Destroyed");
+  }
+
+  async onChange({ url }) {
     await this.page.hide();
     const request = await window.fetch(url);
 
@@ -58,7 +72,7 @@ class App {
       const divContent = div.querySelector(".content");
 
       this.template = divContent.getAttribute("data-template");
-      this.navigation.onChange(this.template);
+
       this.content.setAttribute("data-template", this.template);
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
@@ -81,31 +95,11 @@ class App {
       link.onclick = (event) => {
         event.preventDefault();
         const { href } = link;
-        console.log(event);
-
-        this.onChange({ url: href });
-
-        if (
-          link.className === "navigation__hamburger__link" ||
-          link.className === "navigation__link"
-        ) {
-          console.log("Nav link");
-          const typeOfLink = link.className;
-          if (typeOfLink == "navigation__link") {
-            console.log("I am the logo on the left");
-            const actualUrl = window.location.pathname;
-            actualUrl == "/"
-              ? window.scrollTo({ top: 0, behavior: "smooth" })
-              : this.onChange(href);
-          } else {
-            const address = link.href;
-            const pathArray = address.split("#");
-            const section = pathArray[1];
-            document
-              .getElementById(section)
-              .scrollIntoView({ behavior: "smooth" });
-            this.openMenu();
-          }
+        if (link.className === "navigation__link") {
+          const actualUrl = window.location.pathname;
+          actualUrl == "/"
+            ? window.scrollTo({ top: 0, behavior: "smooth" })
+            : this.onChange({ url: href });
         } else if (
           link.className === "home__homedown__heroarea__button__link"
         ) {
@@ -116,7 +110,7 @@ class App {
             .getElementById(section)
             .scrollIntoView({ behavior: "smooth" });
         } else {
-          this.onChange(href);
+          this.onChange({ url: href });
         }
       };
     });

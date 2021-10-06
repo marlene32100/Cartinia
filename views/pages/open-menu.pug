@@ -1,0 +1,15 @@
+extends ../base
+
+block variables
+  - var template = "menu"
+
+block content
+
+  .menu
+    .menu__wrapper
+      .navigation__open#navigation__open
+        .navigation__list__opened
+          ul.navigation__list
+            each item in navigation.data.link
+              a.navigation__list__link(href=Link(item.linktopage.slug))
+                li.navigation__list__item=item.page[0].text

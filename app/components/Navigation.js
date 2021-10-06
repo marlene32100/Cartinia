@@ -3,7 +3,7 @@ import each from "lodash/each";
 import GSAP from "gsap";
 
 export default class Navigation extends Component {
-  constructor({ template }) {
+  constructor(template) {
     super({
       element: ".navigation",
       elements: {
@@ -12,26 +12,71 @@ export default class Navigation extends Component {
         hamburger: ".navigation__hamburger",
         menu: ".navigation__open",
         items: ".navigation__list__item",
-        image: document.querySelector(".navigation__link__icon"),
+        images: document.querySelector("navigation__link__icon"),
+        links: ".navigation__list__link",
       },
     });
-    this.elements.links = this.elements.menu.querySelectorAll("li");
-    this.onChange(template);
+
     this.createLoader();
   }
 
-  onChange(template) {
-    console.log(template);
+  createLoader() {
+    each(this.elements.images, (element) => {
+      element.onload = (_) => this.onAssetLoaded(element);
+      element.src = element.getAttribute("data-src");
+    });
   }
 
-  createLoader() {
-    const image = this.elements.image;
-    image.src = image.getAttribute("data-src");
+  onAssetLoaded(element) {
+    console.log("Loaded image");
+  }
+
+  async onChange({ url }) {
+    const request = await window.fetch(url);
+    const area = this.element.nextElementSibling;
+    await area.hide();
+    const address = url;
+    const pathArray = address.split("/");
+    const template = pathArray[pathArray.length - 1];
+
+    if (request.status === 200) {
+      const html = await request.text();
+      const div = document.createElement("div");
+
+      div.innerHTML = html;
+
+      const divContent = area;
+
+      this.template = divContent.getAttribute("data-template");
+
+      this.content.setAttribute("data-template", template);
+      this.content.innerHTML = divContent.innerHTML;
+      this.page = this.pages[this.template];
+      this.page.create();
+      this.page.show();
+      this.addLinkListeners();
+    } else {
+      console.log("Error");
+    }
+    // const content = this.element.nextElementSibling;
+    // content.removeAttribute("data-template");
+    // content.setAttribute("data-template", section);
+    // this.hide();
+  }
+
+  addLinks() {
+    const links = this.elements.menu.querySelectorAll("a");
+    each(links, (link) => {
+      link.onclick = (event) => {
+        event.preventDefault();
+        const { href } = link;
+        this.onChange({ url: href });
+      };
+    });
   }
 
   showLinks() {
     const container = this.elements.menu.querySelector("ul");
-    const links = this.elements.menu.querySelectorAll("li");
 
     container.classList.add("navigation__list__opened");
 
@@ -67,5 +112,28 @@ export default class Navigation extends Component {
       backgroundColor: "rgba(154, 197, 252, 0.4)",
     });
     this.showLinks();
+  }
+
+  show() {
+    return new Promise((resolve) => {
+      GSAP.fromTo(
+        this.element,
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+          duration: 2,
+          onComplete: resolve,
+        }
+      );
+    });
+  }
+
+  hide() {
+    return new Promise((resolve) => {
+      GSAP.to(this.element, {
+        autoAlpha: 0,
+        onComplete: resolve,
+      });
+    });
   }
 }

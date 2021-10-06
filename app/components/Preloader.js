@@ -43,14 +43,14 @@ export default class Preloader extends Component {
     this.length += 1;
     const percentage = (this.length / this.elements.images.length) * 100;
 
-    if (Math.round(percentage) === 100) {
+    if (Math.round(percentage) > 40) {
       this.onLoaded();
     }
 
     this.elements.numberText.innerHTML = `${Math.round(percentage)}%`;
   }
 
-  onLoaded() {
+  async onLoaded() {
     return new Promise((resolve) => {
       this.animateOut = GSAP.timeline({
         delay: 2,
@@ -86,6 +86,5 @@ export default class Preloader extends Component {
 
   destroy() {
     this.element.parentNode.removeChild(this.element);
-    console.log("Destroyed");
   }
 }
