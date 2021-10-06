@@ -11,18 +11,5 @@ export default class Footer extends Component {
         ),
       },
     });
-
-    this.createLoader();
-  }
-
-  createLoader() {
-    each(this.elements.images, (element) => {
-      element.onload = (_) => this.onAssetLoaded(element);
-      element.src = element.getAttribute("data-src");
-    });
-  }
-
-  onAssetLoaded(element) {
-    console.log("Loaded image");
   }
 }

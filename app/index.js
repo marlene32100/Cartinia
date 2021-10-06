@@ -1,5 +1,4 @@
 import Navigation from "components/Navigation";
-import Preloader from "components/Preloader";
 import Footer from "components/Footer";
 import Home from "pages/Home";
 import Team from "pages/Team";
@@ -12,7 +11,7 @@ import each from "lodash/each";
 
 class App {
   constructor() {
-    this.createPreloader();
+    // this.createPreloader();
     this.createContent();
     this.createNavigation();
     this.createFooter();
@@ -21,10 +20,10 @@ class App {
     this.addLinkListeners();
   }
 
-  createPreloader() {
-    this.preloader = new Preloader();
-    this.preloader.once("completed", this.onPreloaded.bind(this));
-  }
+  // createPreloader() {
+  //   this.preloader = new Preloader();
+  //   this.preloader.once("completed", this.onPreloaded.bind(this));
+  // }
 
   createNavigation() {
     this.navigation = new Navigation({ template: this.template });
@@ -54,10 +53,10 @@ class App {
     this.page.show();
   }
 
-  onPreloaded() {
-    this.preloader.destroy();
-    console.log("Destroyed");
-  }
+  // onPreloaded() {
+  //   this.preloader.destroy();
+  //   console.log("Destroyed");
+  // }
 
   async onChange({ url }) {
     await this.page.hide();
@@ -84,9 +83,9 @@ class App {
     }
   }
 
-  openMenu() {
-    this.navigation.goFront();
-  }
+  // openMenu() {
+  //   this.navigation.goFront();
+  // }
 
   addLinkListeners() {
     const links = document.querySelectorAll("a");

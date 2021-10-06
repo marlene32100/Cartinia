@@ -16,20 +16,9 @@ export default class Navigation extends Component {
         links: ".navigation__list__link",
       },
     });
-
-    this.createLoader();
   }
 
-  createLoader() {
-    each(this.elements.images, (element) => {
-      element.onload = (_) => this.onAssetLoaded(element);
-      element.src = element.getAttribute("data-src");
-    });
-  }
-
-  onAssetLoaded(element) {
-    console.log("Loaded image");
-  }
+  /*
 
   async onChange({ url }) {
     const request = await window.fetch(url);
@@ -136,4 +125,5 @@ export default class Navigation extends Component {
       });
     });
   }
+  */
 }
