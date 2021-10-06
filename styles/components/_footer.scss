@@ -2,25 +2,43 @@
   position: relative;
   margin-bottom: 0;
   background-color: $color-night-blue;
-  margin-top: 60px;
+  margin-top: 90px;
   height: auto;
   text-align: center;
+  border-top: 3px solid $color-quarter-spanish-white;
 }
 .footer__wrapper {
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+  margin: auto;
+  margin-top: 30px;
+  column-gap: 10px;
+
+  @include media("<tablet") {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include media("<phone") {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include media("<smallphone") {
+    grid-template-columns: 1fr;
+  }
 }
 .footer__contact__wrapper {
   color: $color-quarter-spanish-white;
+  margin: auto;
 }
 .footer__address {
   font-style: italic;
 }
 .footer__phone {
-}
-.footer__phone {
-}
-.footer__email {
+  margin: 5px;
 }
 .footer__email {
+  margin: 5px;
 }
 .footer__logo__wrapper {
   padding: 10px;
