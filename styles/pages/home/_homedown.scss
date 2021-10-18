@@ -106,6 +106,18 @@
   border: 3px solid $color-quarter-spanish-white;
   background-color: $color-night-blue;
   text-transform: uppercase;
+  font-size: 20px;
+  border-radius: 2px;
+  background: #0d1826;
+  box-shadow: 8px 8px 11px #070e16, -8px -8px 11px #132236;
+}
+
+.home__homedown__heroarea__button__item:hover {
+  background-color: $color-quarter-spanish-white;
+  color: $color-night-blue;
+  border: 3px solid $color-night-blue;
+  font-weight: 600;
+  box-shadow: 8px 8px 11px #3a3b3b, -8px -8px 11px #919191;
 }
 
 .home__homedown__heroarea__cta {

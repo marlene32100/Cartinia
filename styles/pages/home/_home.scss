@@ -84,7 +84,7 @@
 .home__landing__media__image {
   height: 180px;
   width: 180px;
-  margin-top: 30px;
+  margin-top: 80px;
   @include media("<phone") {
     height: 180px;
     width: 180px;
@@ -95,9 +95,9 @@
 }
 
 .home__landing__introduction {
-  margin-top: 50%;
+  margin-top: 40%;
   @include media("<tablet") {
-    margin-top: 70%;
+    margin-top: 40%;
   }
   @include media("<phone") {
     margin-top: 20px;
@@ -128,12 +128,14 @@
   position: absolute;
   right: 10%;
   top: 50%;
+  opacity: 1;
   @include media("<phone") {
-    position: relative;
-    text-align: center;
-    line-height: normal;
-    top: 5%;
-    right: 0;
+    // position: relative;
+    // text-align: center;
+    // line-height: normal;
+    // top: 5%;
+    // right: 0;
+    opacity: 0;
   }
 }
 

@@ -6,7 +6,7 @@
   top: 0;
   z-index: 9999;
   width: 100vw;
-  background-color: $color-night-blue;
+  background-color: $color-night-blue-transparent;
 }
 .navigation__bar {
   height: 80px;
@@ -37,9 +37,20 @@
 }
 .navigation__open {
   overflow: hidden;
+  margin-top: 100px;
+  height: 100vh;
 }
 .navigation__list {
 }
+
+.navigation__list__opened {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .navigation__list__item {
   @extend %title;
   padding: 5px;
@@ -50,4 +61,14 @@
   height: "100vh";
   width: "100vw";
   background-color: rgba(154, 197, 252, 0.4);
+}
+
+.go__back {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 200;
+  text-align: center;
+  font-family: "AirstreamNF";
+  color: $color-night-blue;
+  padding: 30px;
 }

@@ -1,4 +1,5 @@
 import Page from "classes/Page";
+import GSAP from "gsap";
 
 export default class Menu extends Page {
   constructor() {
@@ -6,7 +7,7 @@ export default class Menu extends Page {
       id: "menu",
       element: ".menu__wrapper",
       elements: {
-        list: ".navigation__list",
+        list: ".navigation__list__opened",
         items: ".navigation__list__item",
         links: ".navigation__list__link",
       },
@@ -18,16 +19,31 @@ export default class Menu extends Page {
     super.create();
   }
 
+  goFront() {
+    // const menu = this.element;
+    // menu.style.position = "relative";
+    this.animation = GSAP.timeline({});
+    this.animation.to(this.element, { padding: 0 });
+    // this.animation.to(this.elements.bar, {
+    //   autoAlpha: 0,
+    // });
+    this.animation.to(this.element, {
+      height: "100vh",
+      width: "100vw",
+      autoAlpha: 1,
+      stagger: 0.2,
+      backgroundColor: "rgba(154, 197, 252, 0.4)",
+    });
+    this.showLinks();
+  }
+
   showLinks() {
-    const container = this.elements.menu.querySelector("ul");
-
-    container.classList.add("navigation__list__opened");
-
+    const links = document.querySelectorAll("li");
     this.animateIn = GSAP.timeline({
       delay: 2,
     });
     this.animateIn.fromTo(
-      this.elements.links,
+      links,
       { autoAlpha: 0, y: -50 },
       {
         autoAlpha: 1,
@@ -37,23 +53,5 @@ export default class Menu extends Page {
         y: 0,
       }
     );
-  }
-
-  goFront() {
-    const menu = this.element;
-    menu.style.position = "relative";
-    this.animation = GSAP.timeline({});
-    this.animation.to(this.elements.wrapper, { padding: 0 });
-    this.animation.to(this.elements.bar, {
-      autoAlpha: 0,
-    });
-    this.animation.to(menu, {
-      height: "100vh",
-      width: "100vw",
-      autoAlpha: 1,
-      stagger: 0.2,
-      backgroundColor: "rgba(154, 197, 252, 0.4)",
-    });
-    this.showLinks();
   }
 }
