@@ -18,6 +18,7 @@ class App {
     this.createPages();
 
     this.addLinkListeners();
+    this.addEventListeners();
   }
 
   // createPreloader() {
@@ -58,7 +59,7 @@ class App {
   //   console.log("Destroyed");
   // }
 
-  async onChange({ url }) {
+  async onChange({ url, push = true }) {
     await this.page.hide();
     const request = await window.fetch(url);
 
@@ -66,11 +67,17 @@ class App {
       const html = await request.text();
       const div = document.createElement("div");
 
+      if (push) {
+        window.history.pushState({}, "", url);
+      }
+
       div.innerHTML = html;
 
       const divContent = div.querySelector(".content");
 
       this.template = divContent.getAttribute("data-template");
+
+      this.navigation.onChange(this.template);
 
       this.content.setAttribute("data-template", this.template);
       this.content.innerHTML = divContent.innerHTML;
@@ -83,9 +90,13 @@ class App {
     }
   }
 
-  // openMenu() {
-  //   this.navigation.goFront();
-  // }
+  onPopState() {
+    this.onChange({ url: window.location.pathname, push: false });
+  }
+
+  addEventListeners() {
+    window.addEventListener("popstate", this.onPopState.bind(this));
+  }
 
   addLinkListeners() {
     const links = document.querySelectorAll("a");

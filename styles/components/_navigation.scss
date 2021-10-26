@@ -4,9 +4,8 @@
   padding: 0 10px;
   position: fixed; /* Set the navbar to fixed position */
   top: 0;
-  z-index: 9999;
   width: 100vw;
-  background-color: $color-night-blue-transparent;
+  z-index: 9999;
 }
 .navigation__bar {
   height: 80px;
@@ -14,6 +13,7 @@
   /* Position the navbar at the top of the page */
   justify-content: space-between;
   width: 100%;
+  background-color: $color-night-blue-transparent;
 }
 .navigation__link {
   margin-top: auto;
@@ -28,6 +28,15 @@
   margin-bottom: auto;
   fill: $color-quarter-spanish-white;
   padding-right: 3px;
+}
+
+.hamburger__menu__close {
+  opacity: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  fill: $color-quarter-spanish-white;
+  padding-right: 3px;
+  font-size: 50px;
 }
 
 .navigation__hamburger__link {

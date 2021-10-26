@@ -20,13 +20,8 @@ export default class Menu extends Page {
   }
 
   goFront() {
-    // const menu = this.element;
-    // menu.style.position = "relative";
     this.animation = GSAP.timeline({});
     this.animation.to(this.element, { padding: 0 });
-    // this.animation.to(this.elements.bar, {
-    //   autoAlpha: 0,
-    // });
     this.animation.to(this.element, {
       height: "100vh",
       width: "100vw",
@@ -39,6 +34,8 @@ export default class Menu extends Page {
 
   showLinks() {
     const links = document.querySelectorAll("li");
+    const hamburger = document.querySelector(".hamburger__menu");
+    const close = document.querySelector(".hamburger__menu__close");
     this.animateIn = GSAP.timeline({
       delay: 2,
     });
