@@ -1,21 +1,21 @@
 %title {
   font-family: $quicksand-bold;
-  font-size: 35px;
+  font-size: 3.5rem;
   text-align: center;
   text-transform: uppercase;
-  padding: 30px;
+  padding: 3rem;
   z-index: 5;
   color: $color-quarter-spanish-white;
   @include media("<phone") {
-    font-size: 25px;
+    font-size: 2.5rem;
   }
 }
 
 %subtitle {
   font-family: $quicksand-semibold;
-  font-size: 25px;
+  font-size: 2.5rem;
   text-align: center;
   @include media("<phone") {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 }

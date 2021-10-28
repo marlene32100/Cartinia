@@ -62,13 +62,13 @@
     height: fit-content;
     width: fit-content;
     margin: auto;
-    font-size: 25px;
+    font-size: 2.5rem;
   }
 }
 
 .home__homedown__heroarea__button {
   position: absolute;
-  bottom: 30%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
@@ -79,6 +79,8 @@
     text-align: center;
     position: relative;
     grid-template-columns: 1fr;
+    height: auto;
+    bottom: 30%;
   }
 }
 
@@ -90,12 +92,18 @@
   @include media("<phone") {
     opacity: 1;
     font-family: $raleway-light;
-    font-size: 14px;
+    font-size: 1.4rem;
     padding: 10px;
     width: 100%;
     height: fit-content;
     text-align: center;
-    margin: 30px auto 0;
+    margin: 30% auto;
+  }
+}
+
+.home__homedown__heroarea__button__link {
+  @include media("<phone") {
+    background-color: $color-sunny-sky;
   }
 }
 
@@ -106,10 +114,16 @@
   border: 3px solid $color-quarter-spanish-white;
   background-color: $color-night-blue;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 2rem;
   border-radius: 2px;
   background: #0d1826;
   box-shadow: 8px 8px 11px #070e16, -8px -8px 11px #132236;
+  @include media("<phone") {
+    margin: 30% auto;
+    background: $color-night-blue;
+    box-shadow: 8px 8px 11px #e4ecf6, -8px -8px 11px #132236;
+    border: 1px solid $color-sunny-sky;
+  }
 }
 
 .home__homedown__heroarea__button__item:hover {
@@ -135,7 +149,7 @@
   }
 }
 .home__homedown__heroarea__cta__text {
-  font-size: 20px;
+  font-size: 2rem;
   position: absolute;
   left: 50%;
   top: 50%;

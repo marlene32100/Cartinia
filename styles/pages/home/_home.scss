@@ -31,7 +31,7 @@
 
 .home__landing__background {
   @include media("<phone") {
-    height: 60vh;
+    height: 55vh;
     width: 100vw;
   }
 }

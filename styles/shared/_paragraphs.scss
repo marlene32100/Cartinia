@@ -1,9 +1,9 @@
 %description {
   font-family: $raleway-light;
-  font-size: 16px;
-  padding: 10px;
+  font-size: 1.6rem;
+  padding: 1rem;
   @include media("<phone") {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 
@@ -16,12 +16,12 @@
   overflow: hidden;
   background-color: $color-ferrari-red;
   font-family: $raleway-semibold;
-  font-size: 16px;
+  font-size: 1.6rem;
   text-align: center;
-  padding: 0 10px 30px;
+  padding: 0 1rem 3rem;
   position: relative;
   @include media("<phone") {
-    font-size: 14px;
+    font-size: 1.4rem;
     width: 80%;
   }
 }
@@ -59,7 +59,7 @@
 
 %car_description {
   font-family: $raleway-semibold;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: 0;
   border: 0.0625rem solid $color-night-blue;
   background-color: $color-quarter-spanish-white;
@@ -69,6 +69,6 @@
   line-height: 1rem;
 
   @include media("<phone") {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
